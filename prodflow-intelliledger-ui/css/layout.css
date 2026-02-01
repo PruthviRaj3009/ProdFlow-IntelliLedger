@@ -1,0 +1,76 @@
+/*
+  layout.css
+  ---------
+  Application layout primitives.
+  - Shell/grid
+  - Header, sidebar, main
+
+  Keep components out of this file (see components.css).
+*/
+
+/* Login split layout */
+.pf-split{
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.pf-panel{ display: flex; }
+
+.pf-panel--light{ padding: 42px; }
+
+.pf-panel--dark{
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  color: rgba(255,255,255,0.92);
+  background: linear-gradient(135deg, var(--pf-brand-navy), #0b2a4a 45%, rgba(15,118,110,0.92));
+}
+
+.pf-panel--dark::before{
+  content: "";
+  position: absolute;
+  inset: -100px;
+  background:
+    radial-gradient(380px 220px at 30% 30%, rgba(56,189,248,0.18), transparent 60%),
+    radial-gradient(520px 260px at 70% 65%, rgba(45,212,191,0.16), transparent 60%),
+    radial-gradient(520px 320px at 70% 15%, rgba(99,102,241,0.12), transparent 60%);
+  pointer-events: none;
+}
+
+.pf-container{ width: 100%; max-width: 520px; margin: auto; }
+
+/* Internal app layout */
+.pf-app{
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+}
+
+.pf-sidebar{
+  background: var(--pf-surface);
+  border-right: 1px solid var(--pf-border);
+}
+
+.pf-main{
+  padding: 22px;
+}
+
+.pf-topbar{
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--pf-border);
+  background: var(--pf-surface);
+}
+
+@media (max-width: 980px){
+  .pf-split{ grid-template-columns: 1fr; }
+  .pf-panel--light{ padding: 24px; }
+  .pf-panel--dark{ padding: 18px; }
+
+  .pf-app{ grid-template-columns: 1fr; }
+  .pf-sidebar{ display: none; }
+}

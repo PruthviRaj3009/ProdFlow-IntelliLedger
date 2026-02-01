@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ProdFlow-IntelliLedger — Sign In</title>
+
+  <!-- Optional: hosted font; replace with local font in assets/fonts if needed -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <!--
+    Login page (UI-only).
+    Rules:
+    - No public sign-up
+    - Accounts are created by authorized distributors only
+    - Simulated login/session handled by js/auth.js
+  -->
+  <main class="pf-split">
+    <section class="pf-panel pf-panel--light" aria-label="Login">
+      <div class="pf-container">
+        <header class="pf-login-brand">
+          <!-- Placeholder logo mark; replace with assets/images/logo.svg later -->
+          <div style="width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,rgba(15,118,110,.14),rgba(2,132,199,.14));border:1px solid rgba(15,23,42,.10);"></div>
+          <div>
+            <div style="font-weight:700;font-size:14px;letter-spacing:.2px;">ProdFlow-IntelliLedger</div>
+            <div style="font-size:12px;color:rgba(71,85,105,.92);">Production &amp; Ledger Console</div>
+          </div>
+        </header>
+
+        <section class="pf-card" style="margin-top:26px;" aria-label="Sign in">
+          <h1 class="pf-login-title">Welcome Back!</h1>
+          <p class="pf-login-subtitle">Sign in to access your production and ledger dashboard.</p>
+
+          <form id="loginForm" novalidate>
+            <div id="loginError" class="pf-alert" role="alert" aria-live="polite" hidden></div>
+
+            <div class="pf-field">
+              <label class="pf-label" for="email">Email address</label>
+              <input class="pf-input" id="email" name="email" type="email" autocomplete="email" placeholder="name@company.com" required />
+            </div>
+
+            <div class="pf-field">
+              <label class="pf-label" for="password">Password</label>
+              <div style="display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;">
+                <input class="pf-input" id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required />
+                <button id="togglePassword" type="button" class="pf-btn" style="width:44px;padding:0;border:1px solid var(--pf-border);background:#fff;" aria-label="Show password" aria-pressed="false">
+                  <!-- eye icon (UI-only) -->
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                    <path d="M12 5c5.5 0 9.7 4.1 11 7-1.3 2.9-5.5 7-11 7S2.3 15.9 1 12c1.3-2.9 5.5-7 11-7Zm0 2C7.6 7 4.1 10 3.1 12 4.1 14 7.6 17 12 17s7.9-3 8.9-5C19.9 10 16.4 7 12 7Zm0 2.5A2.5 2.5 0 1 1 9.5 12 2.5 2.5 0 0 1 12 9.5Z" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin:8px 0 14px 0;">
+              <label style="display:inline-flex;align-items:center;gap:10px;font-size:13px;color:rgba(30,41,59,.95);">
+                <input id="remember" type="checkbox" style="width:16px;height:16px;accent-color:var(--pf-brand-teal);" />
+                <span>Remember me</span>
+              </label>
+              <a href="#" style="font-size:13px;color:rgba(15,118,110,.95);text-decoration:none;">Forgot password?</a>
+            </div>
+
+            <!-- UI-only: for demo/testing roles. Remove when backend auth exists. -->
+            <div class="pf-field">
+              <label class="pf-label" for="role">Simulated role</label>
+              <select id="role" class="pf-input" aria-label="Simulated role">
+                <option value="admin">Admin</option>
+                <option value="distributor">Distributor</option>
+                <option value="sub_distributor">Sub-distributor</option>
+              </select>
+              <div style="margin-top:8px;font-size:12px;color:rgba(71,85,105,.90);">
+                UI-only: selects which menus are visible after login.
+              </div>
+            </div>
+
+            <button class="pf-btn pf-btn--primary" type="submit">Sign In</button>
+
+            <p style="margin:14px 0 0 0;font-size:12px;color:rgba(71,85,105,.95);">
+              Accounts are created by authorized distributors only.
+            </p>
+          </form>
+        </section>
+
+        <footer style="margin-top:18px;text-align:center;color:rgba(71,85,105,.9);">
+          <small>© <span id="year"></span> ProdFlow-IntelliLedger</small>
+        </footer>
+      </div>
+    </section>
+
+    <aside class="pf-panel pf-panel--dark" aria-label="Product information">
+      <div class="pf-container pf-login-right">
+        <div class="pf-badge">Enterprise Access</div>
+        <h2 style="margin:18px 0 10px 0;font-size:34px;line-height:1.15;letter-spacing:-.4px;">Secure Production &amp; Ledger Management</h2>
+        <p style="margin:0 0 18px 0;font-size:14px;line-height:1.7;color:rgba(255,255,255,.82);">
+          ProdFlow-IntelliLedger is a business-focused system designed to track product flow, manage inventory,
+          and record ledger transactions in a controlled and secure manner.
+        </p>
+
+        <ul style="margin:0;padding:0;list-style:none;display:grid;gap:12px;">
+          <li style="padding:12px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.10);background:rgba(2,6,23,.18);">Controlled access (no public registration)</li>
+          <li style="padding:12px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.10);background:rgba(2,6,23,.18);">Inventory tracking</li>
+          <li style="padding:12px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.10);background:rgba(2,6,23,.18);">Automated ledger entries</li>
+          <li style="padding:12px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.10);background:rgba(2,6,23,.18);">Designed for distributors &amp; sub-distributors</li>
+        </ul>
+
+        <div style="margin-top:22px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.72);">
+          <small>Access restricted to authorized users.</small>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

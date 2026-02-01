@@ -1,0 +1,30 @@
+/*
+  login.css
+  ---------
+  Login page-only styling. Keep it focused.
+*/
+
+.pf-login-brand{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--pf-radius);
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(15,23,42,0.08);
+  box-shadow: 0 8px 18px rgba(2,6,23,0.06);
+}
+
+.pf-login-title{ margin: 0; font-size: 30px; line-height: 1.2; letter-spacing: -0.3px; }
+.pf-login-subtitle{ margin: 8px 0 18px 0; color: var(--pf-muted); font-size: 14px; line-height: 1.5; }
+
+.pf-login-right{
+  position: relative;
+  z-index: 1;
+  padding: 34px;
+  border-radius: var(--pf-radius);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: var(--pf-shadow);
+  backdrop-filter: blur(8px);
+}

@@ -1,0 +1,32 @@
+/*
+  base.css
+  -------
+  Global reset, typography, and base element styles.
+
+  Keep this file low-level and stable.
+  - No page-specific rules
+  - No layout containers (see layout.css)
+*/
+
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+
+body{
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--pf-bg);
+  color: var(--pf-text);
+}
+
+img{ max-width: 100%; display: block; }
+
+a{ color: inherit; }
+
+:focus-visible{
+  outline: 3px solid rgba(15,118,110,0.30);
+  outline-offset: 2px;
+}
+
+/* Utility helpers */
+.pf-muted{ color: var(--pf-muted); }
+.pf-hidden{ display: none !important; }

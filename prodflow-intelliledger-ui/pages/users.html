@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Users (Admin Only) — ProdFlow-IntelliLedger</title>
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+</head>
+<body>
+  <!--
+    Admin-controlled user creation UI.
+    Rules:
+    - Only Admin / Distributor can access this page.
+    - Access is simulated via localStorage role in js/auth.js (no backend).
+  -->
+  <div class="pf-app">
+    <aside class="pf-sidebar" aria-label="Sidebar">
+      <div class="pf-topbar"><strong style="font-size:13px;">ProdFlow-IntelliLedger</strong></div>
+      <nav id="sidebarNav" style="padding:12px 10px;">
+        <a data-nav href="dashboard.html" style="display:block;padding:10px 12px;border-radius:12px;text-decoration:none;">Dashboard</a>
+        <a data-nav href="products.html" style="display:block;padding:10px 12px;border-radius:12px;text-decoration:none;">Products</a>
+        <a data-nav href="inventory.html" style="display:block;padding:10px 12px;border-radius:12px;text-decoration:none;">Inventory</a>
+        <a data-nav href="ledger.html" style="display:block;padding:10px 12px;border-radius:12px;text-decoration:none;">Ledger</a>
+        <a data-nav data-requires-role="admin,distributor" href="users.html" style="display:block;padding:10px 12px;border-radius:12px;text-decoration:none;">Users</a>
+        <a data-nav href="change-password.html" style="display:block;padding:10px 12px;border-radius:12px;text-decoration:none;">Change Password</a>
+      </nav>
+    </aside>
+
+    <div>
+      <header class="pf-topbar">
+        <div>
+          <div style="font-weight:700;">Users</div>
+          <div class="pf-muted" style="font-size:12px;">Create sub-distributor accounts (UI-only)</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <span id="sessionRole" class="pf-badge"></span>
+          <button id="logoutBtn" class="pf-btn" style="border:1px solid var(--pf-border);background:var(--pf-surface);">Logout</button>
+        </div>
+      </header>
+
+      <main class="pf-main">
+        <div id="accessDenied" class="pf-alert" hidden>
+          Access denied (UI-only). This page is restricted to Admin / Distributor roles.
+        </div>
+
+        <section class="pf-card" style="margin-top:12px;" aria-label="Create user">
+          <h2 style="margin:0 0 12px 0;font-size:16px;">Create Sub-distributor</h2>
+
+          <form id="createUserForm" novalidate>
+            <div class="pf-field">
+              <label class="pf-label" for="newName">Full name</label>
+              <input id="newName" class="pf-input" placeholder="e.g., Alex Kumar" required />
+            </div>
+            <div class="pf-field">
+              <label class="pf-label" for="newEmail">Email</label>
+              <input id="newEmail" class="pf-input" type="email" placeholder="user@company.com" required />
+            </div>
+            <div class="pf-field">
+              <label class="pf-label" for="newRegion">Region</label>
+              <input id="newRegion" class="pf-input" placeholder="e.g., West Zone" />
+            </div>
+
+            <button class="pf-btn" style="border:1px solid var(--pf-border);background:var(--pf-surface);" type="submit">Create (UI)</button>
+            <p class="pf-muted" style="font-size:12px;margin:10px 0 0 0;">UI-only: this does not persist to a backend.</p>
+          </form>
+        </section>
+
+        <section class="pf-card" style="margin-top:14px;" aria-label="Existing users">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+            <h2 style="margin:0;font-size:16px;">Existing Users (Mock)</h2>
+            <span class="pf-muted" style="font-size:12px;">Admin-controlled creation only</span>
+          </div>
+          <div style="margin-top:12px;overflow:auto;">
+            <table class="pf-table" id="usersTable" aria-label="Users table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Filled by js/users.js -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/users.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+/*
+  theme.css
+  ---------
+  Theme tokens (light/dark) only.
+  - No layout rules
+  - No component rules
+
+  This file is intended to be backend-ready: future server-rendered pages can set
+  data-theme="dark" or "light" at <html> or <body>.
+*/
+
+:root{
+  /* Brand */
+  --pf-brand-teal: #0f766e;
+  --pf-brand-navy: #07172f;
+
+  /* Semantic */
+  --pf-danger: #b42318;
+  --pf-warning: #b45309;
+  --pf-success: #067647;
+
+  /* Light theme defaults */
+  --pf-bg: #f6f7fb;
+  --pf-surface: #ffffff;
+  --pf-surface-2: #f1f5f9;
+  --pf-text: #0f172a;
+  --pf-muted: #475569;
+  --pf-border: rgba(15, 23, 42, 0.12);
+
+  --pf-shadow-soft: 0 10px 24px rgba(2, 6, 23, 0.10);
+  --pf-shadow: 0 18px 40px rgba(2, 6, 23, 0.12);
+
+  --pf-radius-sm: 12px;
+  --pf-radius: 18px;
+}
+
+/* Dark theme (optional for future expansion) */
+[data-theme="dark"]{
+  --pf-bg: #071229;
+  --pf-surface: rgba(255,255,255,0.06);
+  --pf-surface-2: rgba(255,255,255,0.10);
+  --pf-text: rgba(255,255,255,0.92);
+  --pf-muted: rgba(226,232,240,0.78);
+  --pf-border: rgba(255,255,255,0.14);
+}

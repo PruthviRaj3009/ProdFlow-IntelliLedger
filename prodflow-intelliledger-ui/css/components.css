@@ -1,0 +1,109 @@
+/*
+  components.css
+  --------------
+  Reusable UI building blocks:
+  - Buttons
+  - Inputs
+  - Cards
+  - Tables
+
+  Keep these generic; pages should only compose these.
+*/
+
+.pf-card{
+  background: var(--pf-surface);
+  border: 1px solid rgba(15,23,42,0.08);
+  border-radius: var(--pf-radius);
+  padding: 22px;
+  box-shadow: var(--pf-shadow-soft);
+}
+
+.pf-btn{
+  height: 44px;
+  padding: 0 14px;
+  border-radius: var(--pf-radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.pf-btn--primary{
+  width: 100%;
+  color: #fff;
+  background: linear-gradient(180deg, rgba(15,118,110,1), rgba(11,95,89,1));
+  box-shadow: 0 12px 22px rgba(15,118,110,0.22);
+}
+
+.pf-btn--primary:hover{ filter: brightness(1.03); }
+
+.pf-field{ margin-bottom: 14px; }
+
+.pf-label{
+  display: block;
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.pf-input{
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  border-radius: var(--pf-radius-sm);
+  border: 1px solid var(--pf-border);
+  background: #fff;
+  color: var(--pf-text);
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.pf-input:focus{
+  border-color: rgba(15,118,110,0.55);
+  box-shadow: 0 0 0 4px rgba(15,118,110,0.12);
+}
+
+.pf-input[aria-invalid="true"]{
+  border-color: rgba(180, 35, 24, 0.45);
+  box-shadow: 0 0 0 4px rgba(180, 35, 24, 0.10);
+}
+
+.pf-table{
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: var(--pf-radius-sm);
+  border: 1px solid var(--pf-border);
+}
+
+.pf-table th, .pf-table td{
+  text-align: left;
+  padding: 12px 12px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--pf-border);
+}
+
+.pf-table th{
+  background: var(--pf-surface-2);
+  font-weight: 700;
+}
+
+.pf-badge{
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid var(--pf-border);
+  background: rgba(15,118,110,0.06);
+  color: rgba(15,118,110,0.95);
+}
+
+.pf-alert{
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(180, 35, 24, 0.25);
+  background: rgba(180, 35, 24, 0.08);
+  color: var(--pf-danger);
+  font-size: 13px;
+}
