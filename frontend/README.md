@@ -11,7 +11,7 @@ The project is intentionally structured to be **scalable** and **backend-ready**
 
 ## How to run
 
-Open `index.html` in a browser.
+Open `frontend/index.html` in a browser.
 
 For best results with relative paths, you can also serve it locally with any static server (optional). Example:
 
@@ -40,7 +40,7 @@ This prototype simulates login state using `localStorage`:
 ## Folder structure
 
 ```
-prodflow-intelliledger-ui/
+frontend/
   index.html
 
   pages/

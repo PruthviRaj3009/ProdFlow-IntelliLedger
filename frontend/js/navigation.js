@@ -19,7 +19,14 @@
     // Skip login page.
     if (document.getElementById('loginForm')) return;
 
-    PF.auth.requireAuth();
+    const current = location.pathname.split('/').pop();
+    const params = new URLSearchParams(location.search);
+    const isForgotMode = current === 'change-password.html' && params.get('mode') === 'forgot';
+
+    // UI-only exception: allow opening Change Password from the login screen via "Forgot password?".
+    if (!isForgotMode) {
+      PF.auth.requireAuth();
+    }
 
     const role = PF.auth.getRole();
 
@@ -36,12 +43,13 @@
     });
 
     // Active link highlighting.
-    const current = location.pathname.split('/').pop();
+    // (in forgot mode we may hide the sidebar; highlight is harmless)
+    const currentPage = current;
     document.querySelectorAll('[data-nav]').forEach((a) => {
       const href = a.getAttribute('href');
       if (!href) return;
 
-      const isActive = href === current;
+      const isActive = href === currentPage;
       if (isActive) {
         a.style.background = 'rgba(15,118,110,0.08)';
         a.style.border = '1px solid rgba(15,118,110,0.20)';

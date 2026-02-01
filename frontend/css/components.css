@@ -107,3 +107,10 @@
   color: var(--pf-danger);
   font-size: 13px;
 }
+
+/* Optional success variant (used by forgot/change password screens) */
+.pf-alert--success{
+  border: 1px solid rgba(6, 118, 71, 0.25);
+  background: rgba(6, 118, 71, 0.10);
+  color: var(--pf-success);
+}

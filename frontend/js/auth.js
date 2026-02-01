@@ -125,25 +125,36 @@
         toggleBtn.setAttribute('aria-label', showing ? 'Show password' : 'Hide password');
       });
 
+      // Clear errors as user types
+      const clearOnInput = (el) => {
+        el?.addEventListener('input', () => {
+          setInvalid(el, false);
+          setError('');
+        });
+      };
+      clearOnInput(emailEl);
+      clearOnInput(passEl);
+
       loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
         const email = (emailEl.value || '').trim();
-        const password = (passEl.value || '').trim();
+        const password = (passEl.value || '');
         const role = roleEl?.value || 'sub_distributor';
 
-        let hasError = false;
-        if (!email) {
+        // Validate email format
+        const emailCheck = PF.validation?.email?.(email);
+        if (emailCheck && !emailCheck.ok) {
           setInvalid(emailEl, true);
-          hasError = true;
-        }
-        if (!password) {
-          setInvalid(passEl, true);
-          hasError = true;
+          setError(emailCheck.message);
+          return;
         }
 
-        if (hasError) {
-          setError('Please enter your email address and password.');
+        // Validate password format (UI-only policy)
+        const pwdCheck = PF.validation?.password?.(password);
+        if (pwdCheck && !pwdCheck.ok) {
+          setInvalid(passEl, true);
+          setError(pwdCheck.message);
           return;
         }
 
